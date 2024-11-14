@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Đăng Nhập{% endblock %}
+
+{% block content %}
+<div class="row mt-5">
+    <div class="col-lg-5"></div>
+    <div class="col-lg-2 text-center mt-5">
+        <form class="form-signin" method="post">
+          {% csrf_token %}
+          <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+          <h1 class="h3 mb-5 font-weight-normal">Hệ Thống Quản Lý Điểm</h1>
+
+          <label for="inputEmail" class="sr-only">Tài Khoản</label>
+          <input type="text" id="username" name="username" class="form-control" placeholder="Tài Khoản" required="" autofocus="">
+          <h1 class="mb-1"></h1>
+
+          <label for="inputPassword" class="sr-only">Mật Khẩu</label>
+          <input type="password" id="password" name="password" class="form-control" placeholder="Mật Khẩu" required="">
+          <div class="checkbox mb-5"></div>
+      
+          <button class="btn btn-lg btn-primary btn-block" type="submit">Đăng Nhập</button>
+          <p class="mt-5 mb-3 text-muted">© 2024-2025</p>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

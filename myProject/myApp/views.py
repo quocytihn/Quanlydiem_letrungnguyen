@@ -44,7 +44,11 @@ def logout_view(request):
 #@login_required(login_url='login')
 
 def home_view(request):
-    
+    return render (request, 'home.html')
+
+def danhsach_view(request):
+    return render(request,'danhsach.html')
+def tracuu_view(request):
     if request.method == 'POST':  
         content:None
         form = TimKiemForm (request.POST)  
@@ -72,7 +76,8 @@ def home_view(request):
     else:
         form = TimKiemForm()
         content = Diem.objects.filter(ma_hv = 'ad41145v148051')
-
-    return render (request, 'home.html', {'form': form, 'content':content})
-
-
+    return render(request,'tracuu.html', {'form': form, 'content':content})
+def suadiem_view(request):
+    return render(request,'suadiem.html')
+def lichhoc_view(request):
+    return render(request,'lichhoc.html')

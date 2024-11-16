@@ -37,3 +37,11 @@ class TimKiemForm(forms.Form):
 
 class NhapDiemForm(forms.Form):
     pass
+class DanhSachLopForm(forms.Form):
+    ten_lop = forms.ModelChoiceField(
+        queryset=Lop.objects.all(),
+        label='Chọn tên lớp',
+        empty_label='Chọn lớp',
+        required=True,
+        widget=forms.Select(attrs={'class': 'form-control'}),
+    )

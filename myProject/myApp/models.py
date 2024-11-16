@@ -9,7 +9,7 @@ class Lop(models.Model):
     id_user = models.ForeignKey(User, on_delete=models.CASCADE) 
 
     def __str__(self):
-        return f"{self.ma_lop}/{self.ten_lop}"
+        return f"{self.ma_lop}: {self.ten_lop}"
     
 class HocVien(models.Model):
     ma_hv = models.CharField(max_length=10, primary_key=True)  
@@ -17,13 +17,13 @@ class HocVien(models.Model):
     date = models.DateField()  
     ma_lop = models.ForeignKey(Lop, on_delete=models.CASCADE)
     def __str__(self):
-        return f"{self.ma_hv}/{self.name}"
+        return f"{self.ma_hv}: {self.name}"
 
 class MonHoc(models.Model):
     ma_mh = models.CharField(max_length=10, primary_key=True)  
     ten_mh = models.CharField(max_length=100)  
     def __str__(self):
-        return f"{self.ma_mh}/{self.ten_mh}"
+        return f"{self.ma_mh}: {self.ten_mh}"
 
 HOC_KI_CHOICES = [
         (1, 'Học kỳ 1'),

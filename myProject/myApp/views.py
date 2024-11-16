@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .models import Lop,HocVien,MonHoc,Diem
-from .form import TimKiemForm
+from .form import TimKiemForm,DanhSachLopForm
 
 
 # decorator: kiểm tra xem user có phải là admin???
@@ -47,7 +47,19 @@ def home_view(request):
     return render (request, 'home.html')
 
 def danhsach_view(request):
-    return render(request,'danhsach.html')
+    content:None
+    if request.method == 'POST':  
+        form = DanhSachLopForm(request.POST)  
+        if form.is_valid(): 
+            ten_lop = form.cleaned_data.get('ten_lop')
+            ma_lop_in =str(ten_lop).split(':')[0]
+            content = HocVien.objects.filter(ma_lop = ma_lop_in)
+        else: 
+            form = DanhSachLopForm()
+    else:
+        form = DanhSachLopForm()
+        content = HocVien.objects.filter(ma_lop = 'rgrtiuh6345u')
+    return render(request,'danhsach.html', {'form': form, 'content':content})
 def tracuu_view(request):
     if request.method == 'POST':  
         content:None
@@ -59,9 +71,9 @@ def tracuu_view(request):
             ten_mon_hoc = form.cleaned_data.get('ten_mon_hoc') 
             hoc_ki_in = form.cleaned_data.get('hoc_ki') 
             #kiểm tra xem học viên này có nằm trong lớp này hay không
-            ma_hv_in = str(ten_hoc_vien).split('/')[0]
-            ma_mh_in = str(ten_mon_hoc).split('/')[0]
-            ma_lop_in =str(ten_lop).split('/')[0]
+            ma_hv_in = str(ten_hoc_vien).split(':')[0]
+            ma_mh_in = str(ten_mon_hoc).split(':')[0]
+            ma_lop_in =str(ten_lop).split(':')[0]
             Lop = HocVien.objects.filter(ma_lop = ma_lop_in)
             # Tìm kiếm
             if ten_hoc_vien is not None:

@@ -4,6 +4,50 @@
 
 {% block content %}
 <content>
-  
+    <form action="" method="post">
+        <div class="row" >
+          {% csrf_token %}
+          <div class="col-md-2">
+            <div class="form-group">
+                {{ form.ten_lop.label_tag }}
+                {{ form.ten_lop }}
+            </div>
+          </div>    
+          <div class="col-md-4 pt-4 ">
+            <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+          </div>
+        </div>
+      </form>
+    <div>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Mã học viên</th>
+              <th scope="col">Họ và tên</th>
+              <th scope="col">Ngày sinh</th>
+              <th scope="col">Lớp</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% if content %}
+              {% for item in content %}
+                <tr>
+                  <td>{{item.ma_hv}}</td>
+                  <td>{{item.name}}</td>
+                  <td>{{item.date}}</td>
+                  <td>{{item.ma_lop}}</td>
+                </tr>
+              {% endfor %}
+            {% else %}
+                <tr>
+                  <td>Không có dữ liệu</td>
+                  <td>Không có dữ liệu</td>
+                  <td>Không có dữ liệu</td>
+                  <td>Không có dữ liệu</td>
+                </tr>
+            {% endif %}
+          </tbody>
+        </table>
+      </div>
 </content>
 {% endblock %}

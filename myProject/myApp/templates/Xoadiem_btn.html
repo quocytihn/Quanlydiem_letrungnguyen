@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{%load static%}
+{% block title %}Trang Chủ{% endblock %}
+
+{% block content %}
+<content>
+    <div class="container mt-5">
+        <h2 class="text-center text-danger">Xác nhận xóa</h2>
+        <p>Bạn có chắc chắn muốn xóa điểm của học viên: <strong>{{ diem.ma_hv }}</strong>?</p>
+        <form method="POST">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Xóa</button>
+            <a href="{% url 'suadiem' %}" class="btn btn-secondary">Hủy</a>
+        </form>
+    </div> 
+</content>
+{% endblock %}

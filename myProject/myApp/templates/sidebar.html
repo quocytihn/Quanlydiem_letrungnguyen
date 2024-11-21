@@ -1,20 +1,23 @@
 <nav class="bg-dark text-white vh-100 p-3" style="width: 250px;">
-    <h4 class="text-center m-3">QUẢN LÝ ĐIỂM</h4>
+    <h4 class="text-center m-3">
+        <a class="nav-link text-white link-opacity-50-hover" href="{% url 'danhsach'%}">QUẢN LÝ ĐIỂM</a>
+    </h4>
     <ul class="nav flex-column">
+        
         <li class="nav-item p-2">
-            <a class="nav-link text-white" href="{% url 'lichhoc'%}">LỊCH HỌC</a>
+            <a class="nav-link text-white link-opacity-50-hover" href="{% url 'danhsach'%}">DANH SÁCH LỚP</a>
         </li>
         <li class="nav-item p-2">
-            <a class="nav-link text-white" href="{% url 'danhsach'%}">DANH SÁCH LỚP</a>
+            <a class="nav-link text-white link-opacity-50-hover" href="{% url 'tracuu'%}">TRA CỨU</a>
         </li>
         <li class="nav-item p-2">
-            <a class="nav-link text-white" href="{% url 'tracuu'%}">TRA CỨU</a>
+            <a class="nav-link text-white link-opacity-50-hover" href="{% url 'suadiem'%}">SỬA/XÓA ĐIỂM</a>
         </li>
         <li class="nav-item p-2">
-            <a class="nav-link text-white" href="{% url 'suadiem'%}">NHẬP/XÓA ĐIỂM</a>
+            <a class="nav-link text-white link-opacity-50-hover" href="{% url 'Nhapdiem'%}">NHẬP ĐIỂM</a>
         </li>
         <li class="nav-item p-2">
-            <a class="nav-link text-white" href="{% url 'logout'%}">LOGOUT</a>
+            <a class="nav-link text-white link-opacity-50-hover" href="{% url 'logout'%}">LOGOUT</a>
         </li>
     </ul>
 </nav>

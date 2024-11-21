@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{%load static%}
+{% block title %}Trang Chủ{% endblock %}
+
+{% block content %}
+<content>
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Sửa Điểm</h2>
+        <!-- Hiển thị thông tin hiện tại -->
+        <div class="mb-4">
+            <p><strong>Mã học viên:</strong> {{ diem.ma_hv }}</p>
+            <p><strong>Mã môn học:</strong> {{ diem.ma_mh }}</p>
+            <p><strong>Học kỳ:</strong> {{ diem.hoc_ki }}</p>
+            <p><strong>Điểm hiện tại:</strong> {{ diem.diem }}</p>
+        </div>
+        
+        <!-- Form chỉnh sửa điểm -->
+        <form method="POST">
+            {% csrf_token %}
+            <div class="mb-3">
+                {{ form.as_p }}
+            </div>
+            <div class="d-flex justify-content-between">
+                <button type="submit" class="btn btn-primary">Cập nhật</button>
+                <a href="{% url 'suadiem' %}" class="btn btn-secondary">Hủy</a>
+            </div>
+        </form>
+    </div> 
+</content>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{%load static%}
+{% block title %}Trang Chủ{% endblock %}
+
+{% block content %}
+<content>
+    <body>
+        <h1>Nhập Điểm</h1>
+
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Lưu</button>
+            <a href="{% url 'Nhapdiem' %}" class="btn btn-secondary">Hủy</a>
+        </form>
+        {% if messages %}
+        <div class="container mt-3">
+            {% for message in messages %}
+                <div class="alert {% if message.tags %}alert-{{ message.tags }}{% else %}alert-info{% endif %}" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+    </body>
+</content>
+{% endblock %}

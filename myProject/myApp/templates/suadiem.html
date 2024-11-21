@@ -4,6 +4,73 @@
 
 {% block content %}
 <content>
-  
+  <h1>SỬA VÀ XÓA ĐIỂM HỌC VIÊN</h1>
+  <!--Form tìm kiếm-->
+  <form action="" method="post">
+    <div class="row" >
+      {% csrf_token %}
+      <div class="col-md-2">
+        <div class="form-group">
+            {{ form.ten_lop.label_tag }}
+            {{ form.ten_lop }}
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="form-group">
+            {{ form.ten_hoc_vien.label_tag }}
+            {{ form.ten_hoc_vien }}
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="form-group">
+            {{ form.ten_mon_hoc.label_tag }}
+            {{ form.ten_mon_hoc }}
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="form-group">
+            {{ form.hoc_ki.label_tag }}
+            {{ form.hoc_ki }}
+        </div>
+      </div>
+      <div class="col-md-4 pt-4 ">
+        <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+      </div>
+    </div>
+  </form>
+  <div>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Họ và tên</th>
+          <th scope="col">Môn</th>
+          <th scope="col">Học kì</th>
+          <th scope="col">Điểm</th>
+          <th scope="col">Sửa</th>
+          <th scope="col">Xóa</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if content %}
+          {% for item in content %}
+            <tr>
+              <td>{{item.ma_hv}}</td>
+              <td>{{item.ma_mh}}</td>
+              <td>{{item.hoc_ki}}</td>
+              <td>{{item.diem}}</td>
+              <td><a href="{% url 'Suadiem_btn' item.id  %}" class="btn btn-warning btn-sm active" role="button" aria-pressed="true">Sửa</a></td>
+              <td><a href="{% url 'Xoadiem_btn' item.id  %}" class="btn btn-danger btn-sm active" role="button" aria-pressed="true">Xóa</a></td>
+            </tr>
+          {% endfor %}
+        {% else %}
+            <tr>
+              <div class="alert alert-warning mt-2" role="alert">
+                Không có dữ liệu!
+              </div>
+            </tr>
+        {% endif %}
+      </tbody>
+    </table>
+  </div>
 </content>
 {% endblock %}

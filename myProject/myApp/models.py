@@ -42,5 +42,14 @@ class Diem(models.Model):
 
 
 
+class LichHoc(models.Model):
+    id = models.AutoField(primary_key=True)  # ID tự động tăng
+    ma_lop = models.ForeignKey(Lop, on_delete=models.CASCADE)  # Khóa ngoại đến Lop
+    ma_mh = models.ForeignKey(MonHoc, on_delete=models.CASCADE)  # Khóa ngoại đến MonHoc
+    ngay_hoc = models.DateField()  # Ngày học
+    giang_duong = models.CharField(max_length=100)  # Tên giảng đường hoặc địa điểm
+
+    def __str__(self):
+        return f"{self.ma_lop} - {self.ma_mh} - {self.ngay_hoc} tại {self.giang_duong}"
 
 

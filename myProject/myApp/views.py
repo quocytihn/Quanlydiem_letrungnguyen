@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect,get_object_or_404
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .models import Lop,HocVien,MonHoc,Diem
+from .models import Lop,HocVien,MonHoc,Diem,LichHoc
 from .form import TimKiemForm,DanhSachLopForm,NhapDiemForm,SuaDiemForm
 
 
@@ -174,3 +174,8 @@ def Nhapdiem_view(request):
     else:
         form = NhapDiemForm()
     return render(request,'nhapdiem.html', {'form': form})
+
+def lich_hoc_list(request):
+    lich_hoc = LichHoc.objects.all()  # Lấy tất cả dữ liệu từ bảng LichHoc
+    context = {'lich_hoc': lich_hoc}
+    return render(request, 'lich_hoc_list.html', context)

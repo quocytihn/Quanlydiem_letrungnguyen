@@ -15,6 +15,7 @@ urlpatterns = [
     path('Suadiem_btn/<int:id>/', views.Suadiem_btn_view, name='Suadiem_btn'),
     path('Xoadiem_btn/<int:id>/', views.Xoadiem_btn_view, name='Xoadiem_btn'),
     path('Nhapdiem/', views.Nhapdiem_view, name='Nhapdiem'),
+     path('lich-hoc/', views.lich_hoc_list, name='lich_hoc_list'),  
     #url logout
     path('logout/', views.logout_view, name='logout'),
 ]
